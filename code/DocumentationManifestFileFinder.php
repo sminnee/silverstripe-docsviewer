@@ -1,6 +1,9 @@
 <?php
 
-class DocumentationManifestFileFinder extends SS_FileFinder
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Assets\FileFinder;
+
+class DocumentationManifestFileFinder extends FileFinder
 {
     /**
      * @var array

@@ -1,5 +1,10 @@
 <?php
 
+use SilverStripe\Core\Convert;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Extension;
+
 class DocumentationSearchExtension extends Extension
 {
     /**

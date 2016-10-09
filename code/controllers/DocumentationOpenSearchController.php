@@ -1,5 +1,11 @@
 <?php
 
+use SilverStripe\Security\Security;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\Controller;
+use SilverStripe\View\ArrayData;
+
 /**
  * Public facing controller for handling an opensearch interface based on
  * the standard search form.

@@ -1,5 +1,11 @@
 <?php
 
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\HiddenField;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\Form;
+
 class DocumentationSearchForm extends Form
 {
     public function __construct($controller)

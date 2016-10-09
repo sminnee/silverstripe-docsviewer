@@ -1,5 +1,9 @@
 <?php
 
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Core\Extension;
+
 /**
  * Check to see if the currently accessed version is out of date or perhaps a 
  * future version rather than the stable edition.

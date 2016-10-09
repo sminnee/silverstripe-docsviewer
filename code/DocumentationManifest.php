@@ -1,5 +1,14 @@
 <?php
 
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\Core\Cache;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\i18n\i18n;
+use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+use SilverStripe\View\ArrayData;
+
 /**
  * A class which builds a manifest of all documentation present in a project.
  *
@@ -89,7 +98,7 @@ class DocumentationManifest
         $this->forceRegen = $forceRegen;
         $this->registeredEntities = new ArrayList();
 
-        $this->cache = SS_Cache::factory('DocumentationManifest', 'Core', array(
+        $this->cache = Cache::factory('DocumentationManifest', 'Core', array(
             'automatic_serialization' => true,
             'lifetime' => null
         ));

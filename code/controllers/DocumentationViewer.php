@@ -1,5 +1,19 @@
 <?php
 
+use SilverStripe\Security\Security;
+use SilverStripe\View\Requirements;
+use SilverStripe\Control\Director;
+use SilverStripe\Security\Permission;
+use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\i18n\i18n;
+use SilverStripe\Control\Controller;
+use SilverStripe\View\ArrayData;
+use SilverStripe\Dev\SapphireTest;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\Parsers\ShortcodeParser;
+use SilverStripe\ORM\GroupedList;
+
 /**
  * Documentation Viewer.
  *
@@ -164,7 +178,7 @@ class DocumentationViewer extends Controller
         // off and redirect the user to the page without an extension.
         //
         if (DocumentationHelper::get_extension($url)) {
-            $this->response = new SS_HTTPResponse();
+            $this->response = new HTTPResponse();
             $this->response->redirect(
                 Director::absoluteURL(DocumentationHelper::trim_extension_off($url)) .'/',
                 301
@@ -197,7 +211,7 @@ class DocumentationViewer extends Controller
         if ($link = DocumentationPermalinks::map($url)) {
             // the first param is a shortcode for a page so redirect the user to
             // the short code.
-            $this->response = new SS_HTTPResponse();
+            $this->response = new HTTPResponse();
             $this->response->redirect($link, 301);
 
             $request->shift();
@@ -260,9 +274,9 @@ class DocumentationViewer extends Controller
                     "DocumentationViewer"
                 ));
 
-                return new SS_HTTPResponse($body, 200);
+                return new HTTPResponse($body, 200);
             } elseif ($redirect = $this->getManifest()->getRedirect($url)) {
-                $response = new SS_HTTPResponse();
+                $response = new HTTPResponse();
                 $to = Controller::join_links(Director::baseURL(), $base, $redirect);
                 return $response->redirect($to, 301);
             } elseif (!$url || $url == $lang) {
@@ -271,7 +285,7 @@ class DocumentationViewer extends Controller
                     "DocumentationViewer"
                 ));
 
-                return new SS_HTTPResponse($body, 200);
+                return new HTTPResponse($body, 200);
             }
         }
 
@@ -293,7 +307,7 @@ class DocumentationViewer extends Controller
             'Message' => $message
         )))->renderWith(array("{$class}_error", $class));
 
-        return new SS_HTTPResponse($body, $status);
+        return new HTTPResponse($body, $status);
     }
 
     /**
@@ -412,9 +426,9 @@ class DocumentationViewer extends Controller
      */
     public function includeChildren($args)
     {
-        if (isset($args['Folder'])) {
+        if (isset($args['SilverStripe\\Assets\\Folder'])) {
             $children = $this->getManifest()->getChildrenFor(
-                Controller::join_links(dirname($this->record->getPath()), $args['Folder'])
+                Controller::join_links(dirname($this->record->getPath()), $args['SilverStripe\\Assets\\Folder'])
             );
         } else {
             $children = $this->getManifest()->getChildrenFor(

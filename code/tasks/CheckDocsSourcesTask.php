@@ -1,5 +1,11 @@
 <?php
 
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Convert;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Controller;
+use SilverStripe\Dev\BuildTask;
+
 /**
  * Check status of sources dirs
  */

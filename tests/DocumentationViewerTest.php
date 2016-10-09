@@ -1,5 +1,11 @@
 <?php
 
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\DataModel;
+use SilverStripe\Control\Director;
+use SilverStripe\Dev\FunctionalTest;
+
 /**
  * Some of these tests are simply checking that pages load. They should not assume
  * somethings working.
@@ -61,7 +67,7 @@ class DocumentationViewerTest extends FunctionalTest
             )
         );
 
-        Config::inst()->update('SSViewer', 'theme_enabled', false);
+        Config::inst()->update('SilverStripe\\View\\SSViewer', 'theme_enabled', false);
 
         $this->manifest = new DocumentationManifest(true);
     }
@@ -148,7 +154,7 @@ class DocumentationViewerTest extends FunctionalTest
     {
         $v = new DocumentationViewer();
         // check with children
-        $response = $v->handleRequest(new SS_HTTPRequest('GET', 'en/doc_test/2.3/'), DataModel::inst());
+        $response = $v->handleRequest(new HTTPRequest('GET', 'en/doc_test/2.3/'), DataModel::inst());
 
         $expected = array(
             'dev/docs/en/doc_test/2.3/sort/' => 'Sort',
@@ -160,7 +166,7 @@ class DocumentationViewerTest extends FunctionalTest
         $this->assertEquals($expected, $actual);
 
 
-        $response = $v->handleRequest(new SS_HTTPRequest('GET', 'en/doc_test/2.4/'), DataModel::inst());
+        $response = $v->handleRequest(new HTTPRequest('GET', 'en/doc_test/2.4/'), DataModel::inst());
         $this->assertEquals('current', $v->getMenu()->first()->LinkingMode);
 
         // 2.4 stable release has 1 child page (not including index)
@@ -181,11 +187,11 @@ class DocumentationViewerTest extends FunctionalTest
     public function testGetLanguage()
     {
         $v = new DocumentationViewer();
-        $response = $v->handleRequest(new SS_HTTPRequest('GET', 'en/doc_test/2.3/'), DataModel::inst());
+        $response = $v->handleRequest(new HTTPRequest('GET', 'en/doc_test/2.3/'), DataModel::inst());
 
         $this->assertEquals('en', $v->getLanguage());
 
-        $response = $v->handleRequest(new SS_HTTPRequest('GET', 'en/doc_test/2.3/subfolder/subsubfolder/subsubpage/'), DataModel::inst());
+        $response = $v->handleRequest(new HTTPRequest('GET', 'en/doc_test/2.3/subfolder/subsubfolder/subsubpage/'), DataModel::inst());
         $this->assertEquals('en', $v->getLanguage());
     }
     

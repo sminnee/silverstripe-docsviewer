@@ -1,5 +1,9 @@
 <?php
 
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Controller;
+use SilverStripe\View\ViewableData;
+
 /**
  * A {@link DocumentationEntity} represents a module or folder with stored
  * documentation files. An entity not an individual page but a `section` of

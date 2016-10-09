@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\ORM\ArrayLib;
+
 /**
  * A mapping store of given permalinks to the full documentation path or useful 
  * for customizing the shortcut URLs used in the viewer.

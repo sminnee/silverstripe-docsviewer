@@ -1,5 +1,10 @@
 <?php
 
+use SilverStripe\Assets\Filesystem;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\BuildTask;
+
 /**
  * Rebuilds the search indexes for the documentation pages. 
  *

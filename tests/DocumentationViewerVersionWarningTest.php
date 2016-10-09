@@ -1,5 +1,10 @@
 <?php
 
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\DataModel;
+use SilverStripe\Dev\SapphireTest;
+
 /**
  * @package docsviewer
  * @subpackage tests
@@ -67,19 +72,19 @@ class DocumentationViewerVersionWarningTest extends SapphireTest
         $v = new DocumentationViewer();
         
         // the current version is set to 2.4, no notice should be shown on that page
-        $response = $v->handleRequest(new SS_HTTPRequest('GET', 'en/testdocs/'), DataModel::inst());
+        $response = $v->handleRequest(new HTTPRequest('GET', 'en/testdocs/'), DataModel::inst());
 //        $this->assertFalse($v->VersionWarning());
 
         
         // 2.3 is an older release, hitting that should return us an outdated flag
-        $response = $v->handleRequest(new SS_HTTPRequest('GET', 'en/testdocs/2.3/'), DataModel::inst());
+        $response = $v->handleRequest(new HTTPRequest('GET', 'en/testdocs/2.3/'), DataModel::inst());
         $warn = $v->VersionWarning();
         
  //       $this->assertTrue($warn->OutdatedRelease);
  //       $this->assertNull($warn->FutureRelease);
         
         // 3.0 is a future release
-        $response = $v->handleRequest(new SS_HTTPRequest('GET', 'en/testdocs/3.0/'), DataModel::inst());
+        $response = $v->handleRequest(new HTTPRequest('GET', 'en/testdocs/3.0/'), DataModel::inst());
         $warn = $v->VersionWarning();
         
 //        $this->assertNull($warn->OutdatedRelease);

@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Dev\BuildTask;
+
 class DocumentationBuild extends BuildTask
 {
     public function run($request)

@@ -1,5 +1,10 @@
 <?php
 
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Director;
+use SilverStripe\Control\Controller;
+use SilverStripe\Dev\SapphireTest;
+
 /**
  * @package docsviewer
  * @subpackage tests
@@ -341,10 +346,10 @@ HTML;
             array('`[Title](api:DataObject)`','`[Title](api:DataObject)`'),
             array('`[Title](api:DataObject::$defaults)`','`[Title](api:DataObject::$defaults)`'),
             array('`[Title](api:DataObject::populateDefaults())`','`[Title](api:DataObject::populateDefaults())`'),
-            array('[api:DataObject]', sprintf($html_format,'DataObject','DataObject')),
+            array('[api:DataObject]', sprintf($html_format,'SilverStripe\\ORM\\DataObject','SilverStripe\\ORM\\DataObject')),
             array('[api:DataObject::$defaults]',sprintf($html_format,'DataObject::$defaults','DataObject::$defaults')),
             array('[api:DataObject::populateDefaults()]',sprintf($html_format,'DataObject::populateDefaults()','DataObject::populateDefaults()')),
-            array('[Title](api:DataObject)',sprintf($html_format,'DataObject','Title')),
+            array('[Title](api:DataObject)',sprintf($html_format,'SilverStripe\\ORM\\DataObject','Title')),
             array('[Title](api:DataObject::$defaults)',sprintf($html_format,'DataObject::$defaults','Title')),
             array('[Title](api:DataObject::populateDefaults())',sprintf($html_format,'DataObject::populateDefaults()','Title'))
         );

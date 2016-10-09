@@ -1,5 +1,12 @@
 <?php
 
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\Form;
+
 /**
  * @package docsviewer
  */

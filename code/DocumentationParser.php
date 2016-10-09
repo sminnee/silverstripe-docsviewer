@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
+
 /**
  * Parser wrapping the Markdown Extra parser.
  * 

@@ -1,5 +1,10 @@
 <?php
 
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\HTTPRequest;
+use SilverStripe\ORM\DataModel;
+use SilverStripe\Dev\FunctionalTest;
+
 /**
  * @package docsviewer
  * @subpackage tests
@@ -46,12 +51,12 @@ class DocumentationSearchTest extends FunctionalTest
     public function testOpenSearchControllerAccessible()
     {
         $c = new DocumentationOpenSearchController();
-        $response = $c->handleRequest(new SS_HTTPRequest('GET', ''), DataModel::inst());
+        $response = $c->handleRequest(new HTTPRequest('GET', ''), DataModel::inst());
 //        $this->assertEquals(404, $response->getStatusCode());
         
         Config::inst()->update('DocumentationSearch', 'enabled', false);
 
-        $response = $c->handleRequest(new SS_HTTPRequest('GET', 'description/'), DataModel::inst());
+        $response = $c->handleRequest(new HTTPRequest('GET', 'description/'), DataModel::inst());
 //        $this->assertEquals(404, $response->getStatusCode());
         
         // test we get a response to the description. The meta data test will 
@@ -60,7 +65,7 @@ class DocumentationSearchTest extends FunctionalTest
 
         Config::inst()->update('DocumentationSearch', 'enabled', true);
 
-        $response = $c->handleRequest(new SS_HTTPRequest('GET', 'description'), DataModel::inst());
+        $response = $c->handleRequest(new HTTPRequest('GET', 'description'), DataModel::inst());
 //        $this->assertEquals(200, $response->getStatusCode());
         
         $desc = new SimpleXMLElement($response->getBody());

@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\Control\Controller;
+use SilverStripe\View\ViewableData;
+
 /**
  * A specific documentation page within a {@link DocumentationEntity}. 
  *

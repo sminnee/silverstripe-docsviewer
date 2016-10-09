@@ -1,5 +1,8 @@
 <?php
 
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Dev\SapphireTest;
+
 /**
  * @package docsviewer
  * @subpackage tests

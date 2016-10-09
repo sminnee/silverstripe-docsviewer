@@ -1,5 +1,12 @@
 <?php
 
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Controller;
+use SilverStripe\ORM\FieldType\DBField;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\View\ArrayData;
+use SilverStripe\ORM\DataObject;
+
 set_include_path(
     dirname(dirname(__FILE__)) . '/thirdparty/'. PATH_SEPARATOR .
     get_include_path()
@@ -385,7 +392,7 @@ class DocumentationSearch
         $defaults = array(
             'Description' => _t('DocumentationViewer.OPENSEARCHDESC', 'Search the documentation'),
             'Tags' => _t('DocumentationViewer.OPENSEARCHTAGS', 'documentation'),
-            'Contact' => Config::inst()->get('Email', 'admin_email'),
+            'Contact' => Config::inst()->get('SilverStripe\\Control\\Email\\Email', 'admin_email'),
             'ShortName' => _t('DocumentationViewer.OPENSEARCHNAME', 'Documentation Search'),
             'Author' => 'SilverStripe'
         );

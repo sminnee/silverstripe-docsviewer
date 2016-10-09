@@ -1,5 +1,7 @@
 <?php
 
+use SilverStripe\Core\Extension;
+
 /**
  * An extension to StaticPublisher to enable exporting the documentation pages
  * as HTML files to the server.
