@@ -115,7 +115,7 @@ class DocumentationViewer extends Controller
             Requirements::javascript('//use.typekit.net/emt4dhq.js');
             Requirements::customScript('try{Typekit.load();}catch(e){}');
 
-            Requirements::javascript(THIRDPARTY_DIR .'/jquery/jquery.js');
+            Requirements::javascript('http://code.jquery.com/jquery-1.7.2.min.js');
             Requirements::javascript('https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js');
 
             Requirements::javascript(DOCSVIEWER_DIR .'/javascript/DocumentationViewer.js');
